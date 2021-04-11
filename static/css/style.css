@@ -1,0 +1,264 @@
+#staff-dashboard #left-div{
+    height: 100vh;
+    overflow: scroll;
+}
+
+#right-div{
+    overflow: scroll;
+    height: 100vh;
+}
+
+/*#staff-dashboard #right-div{*/
+/*    */
+/*}*/
+
+#staff-dashboard #left-div{
+    width: 19%;
+    float: left;
+    /*background-color: #272C33;*/
+    background-color: #01010e;
+    padding: 10px 20px;
+}
+
+#staff-dashboard #left-div hr{
+    margin-top: 20px;
+    background-color: lightgray;
+}
+
+#right-div-header{
+    height: 63px;
+    background-color: white;
+    box-shadow: rgb(194, 210, 252) 0px 2px 7px 8px;
+    padding: 20px 10px 40px 20px;
+}
+
+#right-div-section1{
+    height: 40px;
+    width: 100%;
+    background-color: white;
+    margin-top: 5px;
+    /*box-shadow: rgb(194, 210, 252) 0px 2px 7px 8px;*/
+    padding: 10px 20px;
+    overflow: hidden;
+    clear: none;
+}
+
+#right-div-section2{
+    height: 65vh;
+    background-color: white;
+    margin: 5px;
+    border: 1px solid rgb(218, 225, 248);
+    padding: 5px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    clear: none;
+    width: 99%;
+}
+#right-div-section2-special{
+    height: 85vh;
+    background-color: white;
+    margin: 5px;
+    border: 1px solid rgb(218, 225, 248);
+    padding: 5px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    clear: none;
+    width: 99%;
+}
+
+#admin-right-div-section2{
+    height: 40vh;
+    background-color: white;
+    margin: 5px;
+    border: 1px solid rgb(218, 225, 248);
+    padding: 5px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    clear: none;
+    width: 99%;
+}
+
+#right-div-section3{
+    padding: 5px;
+    background-color: white;
+    margin: 15px 5px 5px 5px;
+    border: 1px solid rgb(218, 225, 248);
+    overflow-x: scroll;
+    overflow-y: scroll;
+    clear: none;
+}
+
+#staff-dashboard #right-div{
+    width: 81%;
+    float: left;
+    background-color: #F1F2F7;
+}
+
+#station-hourly-reading {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#station-hourly-reading th, #station-hourly-reading td {
+  text-align: left;
+  padding: 5px;
+}
+
+#station-hourly-reading th{
+    font-size: 11px;
+    background-color: black;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+#station-hourly-reading td{
+    font-size: 12px;
+    border: 1px solid lightgray;
+    /*width: 300px;*/
+}
+
+#station-hourly-reading tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/*------------------------------------------------*/
+#station-hourly-reading-stats {
+  /*border-collapse: collapse;*/
+  width: 100%;
+}
+
+table{
+    border-collapse: separate;
+}
+
+#station-hourly-reading-stats th, #station-hourly-reading-stats td {
+  text-align: left;
+  padding: 8px;
+}
+
+#station-hourly-reading-stats th{
+    font-size: 11px;
+    background-color: black;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+#station-hourly-reading-stats td{
+    font-size: 12px;
+}
+
+#station-hourly-reading-stats tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/*----------------------------------------------------------*/
+
+#add-reading-form input{
+    background-color: lightgray;
+    color: black;
+    margin-bottom: 12px;
+}
+
+#add-reading-form label{
+    display: block;
+    font-size: smaller;
+    margin-bottom: 0;
+}
+
+/* ################################### ADMIN DROPDOWN ############################### */
+#admin-side-nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+#admin-side-nav li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+    padding: 2px;
+}
+
+#admin-side-nav li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+#admin-side-nav li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*####################################################################*/
+/*####################################################################*/
+/*################################ ADD FEEDER TRIPPING MODAL  */
+/*####################################################################*/
+/*####################################################################*/
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+#myModal{
+    height: 90vh;
+    overflow: scroll;
+}
+
+#myModal .modal-body{
+    overflow: scroll;
+}
+
+
+/*#######################################################################*/
+/*#######################################################################*/
+/*#######################################################################*/
+/*#######################################################################*/
+/*#######################################################################*/
+#edit-record-wrapper{
+    background-color: black;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    clear: none;
+}
+
+#edit-record-section{
+    width: 40%;
+    margin: 10px auto;
+    background-color: white;
+    padding: 20px;
+}
+
+#edit-record-section form p input, #edit-record-section form p select, .modal-body form p input, .modal-body form p select{
+    float: right;
+}
+
+.modal-body form p #id_load{
+    margin-bottom: 10px;
+    width: 85%;
+    display: inline;
+}
