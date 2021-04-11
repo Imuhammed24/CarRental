@@ -7,7 +7,7 @@ class VehicleQuerySet(models.QuerySet):
 
     def search(self, query):
         lookup = (
-            Q(brand__icontains=query) |
+            Q(brand__name__icontains=query) |
             Q(model__icontains=query) |
             Q(year__icontains=query) |
             Q(description__icontains=query) |
