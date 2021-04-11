@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block html_body_content %}
+<h1 class="mb-5">Hello {{ request.user }}</h1>
+<a class="btn btn-danger" href="{% url 'account:logout' %}">Logout</a>
+
+
+{% if section == 'search' %}
+{% include 'searches/view.html' %}
+{% else %}
+<div class="border p-2 mt-4 mb-4 w-50">
+    <h3>Search for Vehicle</h3>
+    <form action="{% url 'searches:search' %}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
+        {% csrf_token %}
+        <button type="submit"></button>
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

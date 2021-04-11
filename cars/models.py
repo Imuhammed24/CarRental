@@ -1,9 +1,45 @@
 from django.db import models
+from django.db.models import Q
+from django.utils import timezone
+
+
+class VehicleQuerySet(models.QuerySet):
+
+    def search(self, query):
+        lookup = (
+            Q(brand__icontains=query) |
+            Q(model__icontains=query) |
+            Q(year__icontains=query) |
+            Q(description__icontains=query) |
+            Q(price__icontains=query)
+            # Q(seat_capacity__icontains=query)
+        )
+        return self.filter(lookup)
+
+
+class VehicleManager(models.Manager):
+    def get_queryset(self):
+        return VehicleQuerySet(self.model, using=self._db)
+
+    def search(self, query=None):
+        if query is None:
+            return self.get_queryset().none()
+        return self.get_queryset().search(query)
+
+
+class VehicleBrand(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
 
 
 class Vehicle(models.Model):
-    brand_name = models.CharField(max_length=30)
+    brand = models.ForeignKey(VehicleBrand, null=True,
+                              blank=True, on_delete=models.CASCADE,
+                              related_name='vehicles')
     model = models.CharField(max_length=30)
+    year = models.IntegerField()
     description = models.CharField(max_length=200)
     price = models.FloatField()
     seat_capacity = models.IntegerField()
@@ -11,6 +47,14 @@ class Vehicle(models.Model):
     availability = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now_add=True)
 
+    objects = VehicleManager()
+
     def __str__(self):
-        return f'{self.brand_name, self.model}'
+        return f'{self.brand, self.model} ({self.year})'
+
+
+class VehicleImages(models.Model):
+    vehicle = models.ForeignKey(Vehicle, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField()
+
 

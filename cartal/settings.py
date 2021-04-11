@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'account',
     'cars',
     'reservation',
+    'searches',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'account/templates'),
             os.path.join(BASE_DIR, 'cartal/templates'),
             os.path.join(BASE_DIR, 'reservation/templates'),
+            os.path.join(BASE_DIR, 'searches/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -139,3 +141,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]

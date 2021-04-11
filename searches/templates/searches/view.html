@@ -1,0 +1,26 @@
+{% load static %}
+
+<section>
+    <div class="border w-50">
+        <div>
+            {% if query %}
+            <p class="lead">You searched for '{{ query }}'</p>
+            {% else %}
+            <form class="form-inline my-2 my-lg-0" action=".">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
+            </form>
+            <br>
+            {% endif %}
+
+            {% if search_result and query %}
+                {% for vehicle in search_result %}
+                    <div>
+                        <h6>{{ vehicle }}</h6>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+</section>

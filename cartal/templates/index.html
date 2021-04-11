@@ -2,5 +2,39 @@
 {% load static %}
 
 {% block html_body_content %}
-<h1 class="text-danger">Hello World</h1>
+<h1 class="mb-5">Hello World</h1>
+
+<div>
+    {% for message in messages %}
+    <small>{{message}}</small>
+    {% endfor %}
+</div>
+
+<div class="border p-2 w-50">
+    <h3>Login</h3>
+    <form action="{% url 'account:login' %}" method="post">
+        {{ login_form.as_p }}
+        {% csrf_token %}
+        <small class="d-block mb-2"><a href="">forgot password?</a></small>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="border p-2 mt-4 mb-4 w-50">
+    <h3>Register</h3>
+    <form action="{% url 'account:register' %}" method="post">
+        {{ profile_form.as_p }}
+        {{ registration_form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Register!</button>
+    </form>
+</div>
+
+<div class="border p-2 mt-4 mb-4 w-50">
+    <h3>Search for Vehicle</h3>
+    <form action="{% url 'searches:search' %}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
+    </form>
+</div>
 {% endblock %}
