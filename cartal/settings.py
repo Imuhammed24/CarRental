@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'cars',
+    'vehicles',
     'reservation',
     'searches',
+    "bootstrap4",
+    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +63,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'account/templates'),
             os.path.join(BASE_DIR, 'cartal/templates'),
+            os.path.join(BASE_DIR, 'vehicles/templates'),
             os.path.join(BASE_DIR, 'reservation/templates'),
             os.path.join(BASE_DIR, 'searches/templates'),
         ],
@@ -146,3 +149,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
 ]
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}

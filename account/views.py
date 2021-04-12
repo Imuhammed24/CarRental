@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -7,6 +8,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.http import require_POST
 
 from account.forms import UserRegistrationForm, LoginForm, ProfileForm
+from vehicles.models import Vehicle
 
 
 def validate_digits_letters(word):
@@ -76,8 +78,19 @@ def login_view(request):
         return redirect('index')
 
 
+@login_required(login_url='/')
 def home_view(request):
+    reservations = request.user.reservations.all()
+    vehicles = Vehicle.objects.all().exclude(id__in=[vehicle.id for vehicle in reservations])
+    print(vehicles.count())
     context = {
-        'html_title': f'{request.user.username.upper}',
+        'html_title': f'{request.user.username.upper()} ACCOUNT',
+        'vehicles': vehicles,
     }
     return render(request, 'account/account_base.html', context)
+
+
+@login_required(login_url='/')
+def logout_view(request):
+    logout(request)
+    return redirect('account:home')

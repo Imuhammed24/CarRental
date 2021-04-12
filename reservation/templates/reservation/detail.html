@@ -1,0 +1,23 @@
+<div class="border card mb-5 w-50">
+    <div class="card-body">
+        <h1>Reserve</h1>
+        <hr>
+    </div>
+
+    <div class="card-body">
+        <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
+        <div><strong class="card-subtitle">Description:</strong> <span class="text-primary">{{vehicle.description.title}}</span></div>
+        <div><strong class="card-subtitle">Price (per hour):</strong> <span class="text-primary">NGN{{vehicle.price}}</span></div>
+        <div class="text-muted small"><strong class="card-subtitle">Quantity (in stock):</strong> <span class="text-primary">{{vehicle.quantity}}</span></div>
+        <div class="text-muted small"><strong class="card-subtitle">uploaded time:</strong> <span class="text-primary">{{vehicle.updated}}</span></div>
+        <br>
+        <br>
+        <div><strong class="card-subtitle">STARTING FROM:</strong> <span class="text-primary small">{{reservation.start_period}}</span></div>
+        <div><strong class="card-subtitle">ENDING BY:</strong> <span class="text-primary small">{{reservation.end_period}}</span></div>
+
+
+    </div>
+    <div class="card-body">
+        <button type="submit" class="btn btn-success"><strong>PAY</strong> NGN {{vehicle.price}}</button>
+    </div>
+</div>

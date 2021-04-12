@@ -1,8 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
 from django.shortcuts import render, redirect
 from .models import SearchQuery
-from cars.models import Vehicle
+from vehicles.models import Vehicle
 
 
 @login_required(login_url='/')

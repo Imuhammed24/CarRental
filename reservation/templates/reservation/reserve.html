@@ -1,0 +1,33 @@
+{% load static %}
+{% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
+{% bootstrap_css %}         {# Embed Bootstrap CSS #}
+{% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}
+{{ reservation_form.media }}            {# Adds date-picker required JS and CSS #}
+
+<div class="border card mb-5 w-50">
+    <div class="card-body">
+        <h1>Reserve</h1>
+        <hr>
+    </div>
+
+    <div class="card-body">
+        <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
+        <div><strong class="card-subtitle">Description:</strong> <span class="text-primary">{{vehicle.description}}</span></div>
+        <div><strong class="card-subtitle">Price (per hour):</strong> <span class="text-primary">NGN{{vehicle.price}}</span></div>
+        <div class="text-muted small"><strong class="card-subtitle">Quantity (in stock):</strong> <span class="text-primary">{{vehicle.quantity}}</span></div>
+        <div class="text-muted small"><strong class="card-subtitle">uploaded time:</strong> <span class="text-primary">{{vehicle.updated}}</span></div>
+    </div>
+    <div class="card-body">
+        {% if not is_reserved %}
+        <form action="{% url 'reservation:reserve' vehicle.id %}" method="post">
+            {{reservation_form.as_p}}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Reserve</button>
+        </form>
+        {% else %}
+        <p>
+            <center>Thank you for making a reservation, please click <a href="">here</a> make payment now to secure reservation.</center>
+        </p>
+        {% endif %}
+    </div>
+</div>

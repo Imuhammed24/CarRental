@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_view, name="index"),
     path('account/', include(('account.urls', 'account'), namespace='account')),
+    path('reservation/', include(('reservation.urls', 'reservation'), namespace='reservation')),
     path('search/', include(('searches.urls', 'searches'), namespace='searches')),
 ]
 

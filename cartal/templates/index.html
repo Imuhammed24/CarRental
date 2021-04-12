@@ -37,4 +37,20 @@
         <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
     </form>
 </div>
+
+<div class="border p-2 mt-4 mb-4 w-50">
+    <h3>View Vehicles</h3>
+    {% for vehicle in vehicles %}
+    <h6>{{ vehicle.brand }} <a href="{% url 'reservation:reserve' vehicle.id %}">--> reserve</a></h6>
+    {% empty %}
+    <p class="text-muted">Sorry no vehicle is available for reservation.</p>
+    {% endfor %}
+    <hr>
+    <h5>View Reservations</h5>
+    <ol class="small">
+        {% for record in request.user.reservations.all %}
+        <li><strong class="small"><a href="{% url 'reservation:reserve_detail' record.id %}">{{ record }}</a></strong></li>
+        {% endfor %}
+    </ol>
+</div>
 {% endblock %}
