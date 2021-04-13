@@ -1,3 +1,5 @@
+{% load paystack %}
+
 <div class="border card mb-5 w-50">
     <div class="card-body">
         <h1>Reserve</h1>
@@ -8,6 +10,7 @@
         <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
         <div><strong class="card-subtitle">Description:</strong> <span class="text-primary">{{vehicle.description.title}}</span></div>
         <div><strong class="card-subtitle">Price (per hour):</strong> <span class="text-primary">NGN{{vehicle.price}}</span></div>
+        <div><strong class="card-subtitle">Payment Status:</strong> <span class="{% if not reservation.is_paid%} text-danger {% else %}text-primary{% endif %}">{{reservation.is_paid}}</span></div>
         <div class="text-muted small"><strong class="card-subtitle">Quantity (in stock):</strong> <span class="text-primary">{{vehicle.quantity}}</span></div>
         <div class="text-muted small"><strong class="card-subtitle">uploaded time:</strong> <span class="text-primary">{{vehicle.updated}}</span></div>
         <br>
@@ -18,6 +21,6 @@
 
     </div>
     <div class="card-body">
-        <button type="submit" class="btn btn-success"><strong>PAY</strong> NGN {{vehicle.price}}</button>
+        {% paystack_button amount=vehicle.price metadata=reservation.id email=request.user.email %}
     </div>
 </div>

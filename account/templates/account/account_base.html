@@ -8,7 +8,8 @@
     <a class="" href="{% url 'account:logout' %}">Logout</a>
 </div>
 
-
+{% block payment_success %}
+{% endblock %}
 
 {% if section == 'search' %}
 {% include 'searches/view.html' %}

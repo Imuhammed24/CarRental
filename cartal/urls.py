@@ -26,6 +26,7 @@ urlpatterns = [
     path('reservation/', include(('reservation.urls', 'reservation'), namespace='reservation')),
     path('vehicle/', include(('vehicles.urls', 'vehicles'), namespace='vehicles')),
     path('search/', include(('searches.urls', 'searches'), namespace='searches')),
+    path('paystack/', include(('paystack.urls', 'paystack'), namespace='paystack')),
 ]
 
 if settings.DEBUG:

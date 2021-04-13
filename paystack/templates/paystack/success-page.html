@@ -1,0 +1,15 @@
+{% extends "account/account_base.html" %}
+
+{% block payment_success %}
+
+<div class="w-50 border">
+    <div>
+      <h1>Payment Successful</h1>
+    </div>
+    <div class="card-body">
+        <h4>Hi {{ reservation.user.profile.last_name.title }}, Thank you for your order. You will receive your vehicle shortly.</h4>
+        <p>Your tracking id is {{ reservation.id }} </p>
+    </div>
+</div>
+
+{% endblock %}

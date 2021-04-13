@@ -2,11 +2,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 
 from reservation.forms import ReservationForm
 from reservation.models import Reservation
 from vehicles.forms import MessagesForm
 from vehicles.models import Vehicle, Messages
+from paystack.views import payment_state
 
 
 @login_required(login_url='/')
@@ -55,3 +57,45 @@ def reservation_detail_view(request, reservation_id):
         'section': 'reservation_detail',
     }
     return render(request, 'account/account_base.html', context)
+
+
+class PaymentSuccess(TemplateView):
+    """Land here on successful payment verification."""
+    template_name = 'paystack/success-page.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        reservation_id = kwargs['reservation_id']
+
+        reservation = Reservation.objects.get(id=reservation_id)
+
+        # state = [{'event': payment_state.p_event}, payment_state.p_payment_date,
+        #          payment_state.p_reference, payment_state.p_email, payment_state.p_json_body]
+
+        # context['paystate'] = state
+        context['reservation'] = reservation
+        context['tracking_id'] = reservation_id
+        context['html_title'] = 'PURCHASE SUCCESSFUL'
+        return context
+
+
+class PaymentFailed(TemplateView):
+    """Land here on failed payment verification."""
+    template_name = 'paystack/success-page.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        reservation_id = kwargs['reservation_id']
+
+        reservation = Reservation.objects.get(id=reservation_id)
+
+        state = [{'event': payment_state.p_event}, payment_state.p_payment_date,
+                 payment_state.p_reference, payment_state.p_email, payment_state.p_json_body]
+
+        context['paystate'] = state
+        context['order'] = reservation
+        context['tracking_id'] = reservation_id
+        context['html_title'] = 'PURCHASE FAILED'
+        return context
