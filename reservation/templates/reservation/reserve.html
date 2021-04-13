@@ -30,4 +30,31 @@
         </p>
         {% endif %}
     </div>
+
+</div>
+
+<div class="border w-50 mb-2">
+    <div class="card-body">
+        <h4>Chat with Owner</h4>
+        <div class="chat-wrapper">
+            <hr>
+            {% for message in chat %}
+            <div class="d-block message-box">
+                {% if message.sender == request.user %}
+                <p class="float-right sent d-block">{{message.message}}</p>
+                <br>
+                <br>
+                {% else %}
+                <p class="float-left d-block received {% if not message.is_read %} unread {% endif %}">{{message.message}}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <hr>
+        </div>
+        <form action="{% url 'vehicles:send_message' vehicle.id %}" method="post" class="d-block">
+            {{ message_form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
 </div>

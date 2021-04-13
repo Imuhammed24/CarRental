@@ -1,19 +1,27 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from reservation.forms import ReservationForm
 from reservation.models import Reservation
-from vehicles.models import Vehicle
+from vehicles.forms import MessagesForm
+from vehicles.models import Vehicle, Messages
 
 
 @login_required(login_url='/')
 def add_reservation_view(request, vehicle_id):
     if request.user.is_authenticated:
+        admin = User.objects.get(username='admin')
         vehicle = Vehicle.objects.get(id=vehicle_id)
+        chat = Messages.objects.filter(vehicle=vehicle,
+                                       sender__in=[request.user, admin],
+                                       receiver__in=[request.user, admin])
         context = {
-            'html_title': f'RESERVE {vehicle.brand}',
+            'html_title': f'RESERVE {vehicle.brand.name.upper()}',
             'vehicle': vehicle,
+            'chat': chat,
+            'message_form': MessagesForm(),
             'section': 'reserve',
         }
         if request.method == 'POST':

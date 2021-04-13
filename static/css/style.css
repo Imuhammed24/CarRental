@@ -1,3 +1,40 @@
 *{
     font-family: sans-serif;
 }
+
+.sent, .received{
+    background-color: #d1fcd1;
+    padding: 10px 20px;
+    width: 70%;
+}
+
+.sent:after{
+    content: 'sent';
+    font-size: 9px;
+    margin-top: 10px;
+    display: flow;
+    float: right;
+}
+
+.chat-wrapper, .message-box{
+    overflow: hidden;
+}
+
+.unread{
+    background-color: #8ff58f;
+}
+
+.received:after{
+    content: 'received';
+    font-size: 9px;
+    margin-top: 10px;
+    display: flow;
+    float: right;}
+
+.unread:after{
+    content: '(new)';
+    font-size: 9px;
+    margin-top: 10px;
+    display: flow;
+    float: right;
+}

@@ -24,6 +24,7 @@ urlpatterns = [
     path('', index_view, name="index"),
     path('account/', include(('account.urls', 'account'), namespace='account')),
     path('reservation/', include(('reservation.urls', 'reservation'), namespace='reservation')),
+    path('vehicle/', include(('vehicles.urls', 'vehicles'), namespace='vehicles')),
     path('search/', include(('searches.urls', 'searches'), namespace='searches')),
 ]
 

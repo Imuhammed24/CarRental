@@ -68,3 +68,9 @@ class Messages(models.Model):
     message = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'from {self.sender} to {self.receiver}'
+
+    class Meta:
+        ordering = ['timestamp']
