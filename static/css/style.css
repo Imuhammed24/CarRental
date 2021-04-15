@@ -38,3 +38,115 @@
     display: flow;
     float: right;
 }
+
+#main-header{
+    height: 10vh;
+    width: 100%;
+    /*background-color: #FE6610;*/
+    padding: 20px 0 10px 0;
+    overflow: hidden;
+}
+
+#header-content{
+    width: 73%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#logo{
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    padding: 10px 20px;
+}
+
+.logo-wrapper{
+    border: 1px;
+    background-color: #FE6610;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#search-text{
+    border-radius: 10px;
+    color: #FE6610;
+}
+
+#main-header.header-links{
+    overflow: hidden;
+}
+
+#main-header.header-links, .header-links ul{
+    display: inline-block;
+    float: right;
+}
+
+.header-links ul li{
+    display: inline-block;
+    font-weight: 600;
+    /*margin-top: 7px;*/
+    margin-left: 15px;
+}
+
+.header-links ul li a{
+    /*text-decoration: underline;*/
+    color: #FE6610;
+}
+
+#index-section{
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#index-section, #index-section2{
+    width: 100%;
+    overflow: hidden;
+}
+
+#index-section-content{
+    height: 100%;
+}
+
+#index-section-content, #index-section2-content{
+    width: 70%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#index-section2-content{
+    padding: 17px 0;
+}
+
+#index-search-box{
+    margin-top: 10%;
+    /*margin-left: -35px;*/
+    padding: 10px 25px;
+    border-radius: 20px;
+    height: 65%;
+    overflow: hidden;
+    width: 50%;
+    background-color: white;
+}
+
+#search-form input{
+    border: none;
+    background-color: #F0F3F5;
+    border-radius: 10px;
+    color: black;
+}
+
+#search-form input::placeholder{
+    color: black;
+}
+
+#search-form button{
+    width: 100%;
+    background-color: olive;
+    color: white;
+    padding: 10px 40px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+}

@@ -2,7 +2,24 @@
 {% load static %}
 
 {% block html_body_content %}
-<h1 class="mb-5">Hello World</h1>
+{% include 'header.html' %}
+<section id="index-section" style="background-image: url('{% static "images/section-bg0.jpg" %}')">
+    <div id="index-section-content">
+
+        <div id="index-search-box">
+            <h1 class="font-weight-bold mb-5"><span id="search-text">Search</span> for your vehicle</h1>
+            <br>
+            {% include 'search-form.html' %}
+        </div>
+
+    </div>
+</section>
+
+<section id="index-section2">
+    <div id="index-section2-content">
+        <h2 class="font-weight-bolder">Some cars for you</h2>
+    </div>
+</section>
 
 <div>
     {% for message in messages %}
@@ -30,13 +47,6 @@
     </form>
 </div>
 
-<div class="border p-2 mt-4 mb-4 w-50">
-    <h3>Search for Vehicle</h3>
-    <form action="{% url 'searches:search' %}">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-        <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
-    </form>
-</div>
 
 <div class="border p-2 mt-4 mb-4 w-50">
     <h3>View Vehicles</h3>
