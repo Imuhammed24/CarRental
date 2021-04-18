@@ -3,6 +3,17 @@
 
 {% block html_body_content %}
 {% include 'header.html' %}
+<div>
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Alert!</strong> {{message}}.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+</div>
+
 <section id="index-section" style="background-image: url('{% static "images/section-bg0.jpg" %}')">
     <div id="index-section-content">
 
@@ -18,49 +29,33 @@
 <section id="index-section2">
     <div id="index-section2-content">
         <h2 class="font-weight-bolder">Some cars for you</h2>
+
+        <div>
+
+              <div class="card-deck">
+                  {% for vehicle in vehicles %}
+                  <div class="card">
+                    <img class="card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title font-weight-bold">{{vehicle.brand}}</h5>
+                      <p class="card-text">{{vehicle.model}}, {{vehicle.year}}</p>
+                        <a class="btn btn-primary" href="{% url 'reservation:reserve' vehicle.id %}">reserve</a>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                  {% empty %}
+                    <p class="text-muted">Sorry no vehicle is available for reservation.</p>
+                  {% endfor %}
+                </div>
+
+        </div>
+
     </div>
+
 </section>
 
-<div>
-    {% for message in messages %}
-    <small>{{message}}</small>
-    {% endfor %}
-</div>
 
-<div class="border p-2 w-50">
-    <h3>Login</h3>
-    <form action="{% url 'account:login' %}" method="post">
-        {{ login_form.as_p }}
-        {% csrf_token %}
-        <small class="d-block mb-2"><a href="">forgot password?</a></small>
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
-<div class="border p-2 mt-4 mb-4 w-50">
-    <h3>Register</h3>
-    <form action="{% url 'account:register' %}" method="post">
-        {{ profile_form.as_p }}
-        {{ registration_form.as_p }}
-        {% csrf_token %}
-        <button type="submit">Register!</button>
-    </form>
-</div>
-
-
-<div class="border p-2 mt-4 mb-4 w-50">
-    <h3>View Vehicles</h3>
-    {% for vehicle in vehicles %}
-    <h6>{{ vehicle.brand }} <a href="{% url 'reservation:reserve' vehicle.id %}">--> reserve</a></h6>
-    {% empty %}
-    <p class="text-muted">Sorry no vehicle is available for reservation.</p>
-    {% endfor %}
-    <hr>
-    <h5>View Reservations</h5>
-    <ol class="small">
-        {% for record in request.user.reservations.all %}
-        <li><strong class="small"><a href="{% url 'reservation:reserve_detail' record.id %}">{{ record }}</a></strong></li>
-        {% endfor %}
-    </ol>
-</div>
+<!-- Modal -->
+{% include 'registration-modal.html' %}
+{% include 'login-modal.html' %}
 {% endblock %}

@@ -2,13 +2,14 @@
 
 {% block payment_success %}
 
-<div class="w-50 border">
+<div class="w-50 card-body">
     <div>
-      <h1>Payment Successful</h1>
+      <h1 class="font-weight-bold">Payment Successful</h1>
     </div>
     <div class="card-body">
-        <h4>Hi {{ reservation.user.profile.last_name.title }}, Thank you for your order. You will receive your vehicle shortly.</h4>
-        <p>Your tracking id is {{ reservation.id }} </p>
+        <h4>Hi {{ request.user.username.title }}! <br><br>Thank you for your order. You will receive your vehicle shortly.</h4>
+        <br>
+        <p>Your tracking id is KRS{{ reservation.id }} </p>
     </div>
 </div>
 

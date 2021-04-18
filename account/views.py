@@ -82,10 +82,11 @@ def login_view(request):
 def home_view(request):
     reservations = request.user.reservations.all()
     vehicles = Vehicle.objects.all().exclude(id__in=[vehicle.id for vehicle in reservations])
-    print(vehicles.count())
     context = {
         'html_title': f'{request.user.username.upper()} ACCOUNT',
         'vehicles': vehicles,
+        'section': 'account',
+        'sub_section': 'default_home',
     }
     return render(request, 'account/account_base.html', context)
 

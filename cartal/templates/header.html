@@ -1,15 +1,22 @@
 <header id="main-header">
-    <div id="header-content">
+    <div id="{% if section == 'account' %}account-header-content{% else %}header-content{% endif %}">
         <div class="d-inline logo-wrapper">
-            <h3 class="d-inline" id="logo">CarRen</h3>
+            <h3 class="d-inline" id="logo"><a class="text-dark" href="/">CarRen</a></h3>
         </div>
         <div class="header-links d-inline">
             <ul>
-                <li class="list-unstyled"><a href="">Home</a></li>
+                <li class="list-unstyled"><a href="{% url 'account:home' %}">Account</a></li>
                 <li class="list-unstyled"><a href="">About</a></li>
                 <li class="list-unstyled"><a href="">Contact us</a></li>
-                <li class="list-unstyled"><a href="" class="btn text-white btn-dark">Sign-up</a></li>
-                <li class="list-unstyled"><a href="" class="btn text-white btn-dark">Sign-in</a></li>
+                {% if not request.user.is_authenticated %}
+                <li class="list-unstyled"><button type="button" class="header-btn text-white" data-toggle="modal" data-target="#exampleModal">Sign-up</button></li>
+                <li class="list-unstyled"><button type="button" class="header-btn text-white" data-toggle="modal" data-target="#loginModal">Sign-in</button></li>
+                {% include 'registration-modal.html' %}
+                {% include 'login-modal.html' %}
+                {% else %}
+                <li class="list-unstyled"><a href="{% url 'account:logout' %}" class="header-btn btn text-white">Logout</a></li>
+                {% endif%}
+<!--                <li class="list-unstyled"><a href="" class="btn text-white btn-dark">Sign-in</a></li>-->
             </ul>
         </div>
     </div>

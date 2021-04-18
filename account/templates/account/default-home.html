@@ -1,0 +1,22 @@
+<div id="accountContentTitleDiv">
+    <center><h3 class="font-weight-bold">Welcome to CarRen</h3></center>
+    <center><p class="text-muted">Check out some of our latest vehicles</p></center>
+</div>
+
+<div id="vehicleCatalogue">
+    <div class="card-deck">
+        {% for vehicle in vehicles %}
+        <div class="card">
+            <img class="card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title font-weight-bold">{{vehicle.brand}}</h5>
+                <p class="card-text">{{vehicle.model}}, {{vehicle.year}}</p>
+                <a class="btn btn-primary" href="{% url 'reservation:reserve' vehicle.id %}">reserve</a>
+                <p class="card-text"><small class="text-muted">Last updated {{vehicle.updated|timesince}} ago</small></p>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">Sorry no vehicle is available for reservation.</p>
+        {% endfor %}
+    </div>
+</div>

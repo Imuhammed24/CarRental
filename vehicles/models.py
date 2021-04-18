@@ -49,6 +49,7 @@ class Vehicle(models.Model):
     quantity = models.IntegerField()
     availability = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now_add=True)
+    current_location = models.CharField(blank=True, null=True, max_length=20)
 
     objects = VehicleManager()
 

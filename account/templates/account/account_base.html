@@ -2,52 +2,78 @@
 {% load static %}
 
 {% block html_body_content %}
+<div>
+    <div id="account-left-div">
+        <div class="userInfoDiv mb-4">
+            <h3 class="text-white mb-0">{{request.user.username.title}}</h3>
+            <small class="text-muted">{{request.user.email}}</small>
+        </div>
+        <div id="mainLinksDiv">
+            <ul>
+                <li class="list-unstyled"><a class="{% if not sub_section == 'default_home' %} text-white {% endif %}" href="{% url 'account:home' %}">Explore
+                    Vehicles</a></li>
+                <li class="list-unstyled"><a class="text-white" data-toggle="modal" data-target="#exampleModalCenter" href="">Search for vehicle</a></li>
 
-<div class="mb-4 card-title pl-3">
-    <h2 class="mb-1">Hello {{ request.user.username.title }}!</h2>
-    <a class="mr-2" href="{% url 'account:home' %}">Home</a>
-    <a class="" href="{% url 'account:logout' %}">Logout</a>
+                <li class="list-unstyled"><a class="{% if not sub_section == 'reservation_list' %} text-white {% endif %}" href="{% url 'reservation:reservation_list' %}">Reserved Vehicle</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="account-right-div">
+        {% include 'header.html' %}
+        <div id="page-messages">
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Alert!</strong> {{message}}.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if sub_section == 'default_home' %}
+        {% include 'account/default-home.html' %}
+        {% elif sub_section == 'reservation_list' %}
+        {% include 'reservation/list.html' %}
+        {% elif sub_section == 'reservation_detail' %}
+        {% include 'reservation/detail.html' %}
+        {% elif sub_section == 'reserve' %}
+        {% include 'reservation/reserve.html' %}
+        {% elif sub_section == 'payment_success' %}
+        {% block payment_success %}
+        {% endblock %}
+        {% endif %}
+    </div>
 </div>
 
-{% block payment_success %}
-{% endblock %}
 
-{% if section == 'search' %}
-{% include 'searches/view.html' %}
-{% elif 'search' not in section %}
 
-{% endif %}
-
-{% if section == 'reserve' %}
-{% include 'reservation/reserve.html' %}
-{% endif %}
-
-{% if section == 'reservation_detail' %}
-{% include 'reservation/detail.html' %}
-{% endif %}
-
-<div class="border p-2 mt-4 mb-4 w-50">
-    <h3>Search for Vehicle</h3>
-    <form action="{% url 'searches:search' %}">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-        <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
-    </form>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="">
+            <h1 class="font-weight-bold mb-5"><span id="search-text">Search</span> for your vehicle</h1>
+            <br>
+            {% include 'search-form.html' %}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="border p-2 mt-4 mb-4 w-50">
-    <h3>View Vehicles</h3>
-    {% for vehicle in vehicles %}
-    <h6>{{ vehicle.brand }} <a href="{% url 'reservation:reserve' vehicle.id %}">--> reserve</a></h6>
-    {% empty %}
-    <p class="text-muted">Sorry no vehicle is available for reservation.</p>
-    {% endfor %}
-    <hr>
-    <h5>View Reservations</h5>
-    <ol class="small">
-        {% for record in request.user.reservations.all %}
-        <li><strong class="small"><a href="{% url 'reservation:reserve_detail' record.id %}">{{ record }}</a></strong></li>
-        {% endfor %}
-    </ol>
-</div>
+
+
 
 {% endblock %}

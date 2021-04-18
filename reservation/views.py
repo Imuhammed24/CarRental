@@ -11,7 +11,6 @@ from vehicles.models import Vehicle, Messages
 from paystack.views import payment_state
 
 
-@login_required(login_url='/')
 def add_reservation_view(request, vehicle_id):
     if request.user.is_authenticated:
         admin = User.objects.get(username='admin')
@@ -24,7 +23,8 @@ def add_reservation_view(request, vehicle_id):
             'vehicle': vehicle,
             'chat': chat,
             'message_form': MessagesForm(),
-            'section': 'reserve',
+            'section': 'account',
+            'sub_section': 'reserve',
         }
         if request.method == 'POST':
             reservation_form = ReservationForm(request.POST)
@@ -54,7 +54,20 @@ def reservation_detail_view(request, reservation_id):
         'html_title': f'RESERVATION DETAILS {vehicle.brand}',
         'reservation': reservation,
         'vehicle': vehicle,
-        'section': 'reservation_detail',
+        'section': 'account',
+        'sub_section': 'reservation_detail',
+    }
+    return render(request, 'account/account_base.html', context)
+
+
+@login_required(login_url='/')
+def reservation_list_view(request):
+    reservations = Reservation.objects.filter(user=request.user)
+    context = {
+        'html_title': 'RESERVATIONS',
+        'reservations': reservations,
+        'section': 'account',
+        'sub_section': 'reservation_list',
     }
     return render(request, 'account/account_base.html', context)
 
@@ -76,6 +89,8 @@ class PaymentSuccess(TemplateView):
         # context['paystate'] = state
         context['reservation'] = reservation
         context['tracking_id'] = reservation_id
+        context['sub_section'] = 'payment_success'
+        context['section'] = 'account'
         context['html_title'] = 'PURCHASE SUCCESSFUL'
         return context
 

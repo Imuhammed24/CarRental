@@ -1,26 +1,58 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<section>
-    <div class="border w-50">
-        <div>
-            {% if query %}
-            <p class="lead">You searched for '{{ query }}'</p>
-            {% else %}
-            <form class="form-inline my-2 my-lg-0" action=".">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
-            </form>
-            <br>
-            {% endif %}
+{% block html_body_content %}
+{% include 'header.html' %}
+<div>
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Alert!</strong> {{message}}.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+</div>
 
-            {% if search_result and query %}
-                {% for vehicle in search_result %}
-                    <div>
-                        <h6>{{ vehicle }}</h6>
+<section id="search-result-section">
+    <div id="index-section2-content">
+        {% if query %}
+            <h2 class="lead">You searched for '{{ query }}'</h2>
+        {% else %}
+        <form class="form-inline my-2 my-lg-0" action=".">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+            <button class="btn btn-outline-primary mt-2" type="submit">Search</button>
+        </form>
+        <br>
+        {% endif %}
+    <div>
+
+              <div class="card-deck">
+                  {% if search_result and query %}
+                  {% for vehicle in search_result %}
+                  <div class="card">
+                    <img class="card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title font-weight-bold">{{vehicle.brand}}</h5>
+                      <p class="card-text">{{vehicle.model}}, {{vehicle.year}}</p>
+                        <a class="btn btn-primary" href="{% url 'reservation:reserve' vehicle.id %}">reserve</a>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                {% endfor %}
-            {% endif %}
+                  </div>
+                  {% empty %}
+                    <p class="text-muted">Sorry no vehicle is available for reservation.</p>
+                  {% endfor %}
+                  {% endif %}
+                </div>
 
         </div>
+
     </div>
+
 </section>
+
+
+<!-- Modal -->
+
+
+{% endblock %}

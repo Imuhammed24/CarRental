@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-x7c^v)q$%pxe4avw9oao51_7c2&fp%8$sc0(c9z6d4t*c68)gw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '3575b2dd0c36.ngrok.io', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '0ac9b5be59fd.ngrok.io', '127.0.0.1']
 
 
 # Application definition
@@ -157,7 +157,7 @@ BOOTSTRAP4 = {
 
 
 PAYSTACK_PUBLIC_KEY = 'pk_test_0e66977617d78ed561f7915bd11ba7e2e617097b'
-PAYSTACK_SECRET_KEY = 'sk_test_cb7b48a3077246e5fe7a25151e715be9d8a894be'
+PAYSTACK_SECRET_KEY = 'sk_test_b51e7b64428c4c538fc0133801365c36bcaa6094'
 # PAYSTACK_SUCCESS_URL = 'paystack:success_page'
 PAYSTACK_SUCCESS_URL = 'reservation:success_pay'
 # PAYSTACK_FAILED_URL = 'paystack:failed_page'

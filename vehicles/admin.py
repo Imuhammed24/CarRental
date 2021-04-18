@@ -6,8 +6,12 @@ class MessagesAdmin(admin.ModelAdmin):
     list_display = ['sender', 'receiver', 'timestamp', 'is_read']
 
 
-admin.site.register(Messages, MessagesAdmin)
+class VehicleAdmin(admin.ModelAdmin):
+    list_display = ['brand', 'model', 'year', 'description', 'price',
+                    'seat_capacity', 'availability', 'current_location']
 
-admin.site.register(Vehicle)
+
+admin.site.register(Messages, MessagesAdmin)
+admin.site.register(Vehicle, VehicleAdmin)
 admin.site.register(VehicleBrand)
 admin.site.register(VehicleImages)

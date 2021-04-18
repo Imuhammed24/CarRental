@@ -1,12 +1,12 @@
 {% load static %}
-{% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
-{% bootstrap_css %}         {# Embed Bootstrap CSS #}
-{% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}
-{{ reservation_form.media }}            {# Adds date-picker required JS and CSS #}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{{ reservation_form.media }}
 
-<div class="border card mb-5 w-50">
+<div id="reserve-left-div" class="float-left card w-50">
     <div class="card-body">
-        <h1>Reserve</h1>
+        <h3>Reserve</h3>
         <hr>
     </div>
 
@@ -22,22 +22,21 @@
         <form action="{% url 'reservation:reserve' vehicle.id %}" method="post">
             {{reservation_form.as_p}}
             {% csrf_token %}
-            <button type="submit" class="btn btn-success">Reserve</button>
+            <button type="submit" class="header-btn">Reserve</button>
         </form>
         {% else %}
         <p>
-            <center>Thank you for making a reservation, please click <a href="">here</a> make payment now to secure reservation.</center>
+            <center>Thank you for making a reservation, please click <a href="{% url 'reservation:reserve_detail' reservation.id %}">here</a> make payment now to secure reservation.</center>
         </p>
         {% endif %}
     </div>
 
 </div>
 
-<div class="border w-50 mb-2">
+<div id="reserve-right-div" class="border float-right w-50">
     <div class="card-body">
-        <h4>Chat with Owner</h4>
+        <h3>Chat with Owner</h3>
         <div class="chat-wrapper">
-            <hr>
             {% for message in chat %}
             <div class="d-block message-box">
                 {% if message.sender == request.user %}
@@ -51,10 +50,10 @@
             {% endfor %}
             <hr>
         </div>
-        <form action="{% url 'vehicles:send_message' vehicle.id %}" method="post" class="d-block">
+        <form id="message_admin_form" action="{% url 'vehicles:send_message' vehicle.id %}" method="post" class="d-block">
             {{ message_form.as_p }}
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="header-btn">Send</button>
         </form>
     </div>
 </div>

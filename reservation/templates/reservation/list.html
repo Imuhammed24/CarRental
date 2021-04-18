@@ -1,0 +1,17 @@
+<div id="vehicleCatalogue" class="p-3">
+{% for reservation in reservations %}
+<div class="card">
+  <div class="card-header">
+    RESERVED
+  </div>
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold">{{reservation.vehicle.brand}}</h5>
+    <p class="card-text">{{reservation.vehicle.model}}, {{reservation.vehicle.year}}</p>
+    <a class="btn btn-primary" href="{% url 'reservation:reserve_detail' reservation.id %}">View Details</a>
+    <p class="card-text"><small class="text-muted">Last updated {{reservation.vehicle.updated|timesince}} ago</small></p>
+  </div>
+</div>
+{% empty %}
+<p class="text-muted">Sorry no vehicle has been reserved.</p>
+{% endfor %}
+</div>
