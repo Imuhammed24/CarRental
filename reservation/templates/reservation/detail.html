@@ -1,4 +1,5 @@
 {% load paystack %}
+{% load humanizelib %}
 
 <div class="mb-5 w-50">
     <div class="card-body">
@@ -6,11 +7,18 @@
         <hr>
     </div>
 
+    <div class="container mt-3">
+        <img class="card-img card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+        <br>
+    </div>
+
     <div class="card-body">
-        <div><strong class="card-subtitle">Description:</strong> <span class="text-primary">{{vehicle.description.title}}</span></div>
-        <div><strong class="card-subtitle">Price (per hour):</strong> <span class="text-primary">NGN{{vehicle.price}}</span></div>
-        <div><strong class="card-subtitle">Payment Status:</strong> <span class="{% if not reservation.is_paid%} text-danger {% else %}text-primary{% endif %} font-weight-bold">{{reservation.is_paid}}</span></div>
-        <div class="text-muted small mt-3"><strong class="card-subtitle">Quantity (in stock):</strong> <span class="text-primary">{{vehicle.quantity}}</span></div>
+        <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
+        <div><strong class="card-subtitle">Condition:</strong> <span class="text-primary">{{vehicle.condition}}</span></div>
+        <div><strong class="card-subtitle">Colour:</strong> <span class="text-primary">{{vehicle.colour}}</span></div>
+        <div><strong class="card-subtitle">Description:</strong> <span class="text-primary">{{vehicle.description}}</span></div>
+        <div><strong class="card-subtitle">Price (per hour):</strong> <span class="text-primary">NGN{{vehicle.price|floatformat:2|intcomma}}</span></div>
+        <div class="text-muted small"><strong class="card-subtitle">Quantity (in stock):</strong> <span class="text-primary">{{vehicle.quantity}}</span></div>
         <div class="text-muted small"><strong class="card-subtitle">uploaded time:</strong> <span class="text-primary">{{vehicle.updated}}</span></div>
         <br>
         <br>

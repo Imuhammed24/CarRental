@@ -3,23 +3,32 @@
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
 {{ reservation_form.media }}
+{% load humanizelib %}
 
-<div id="reserve-left-div" class="float-left card w-50">
+<div id="reserve-left-div" class="float-left card">
     <div class="card-body">
         <h3>Reserve</h3>
         <hr>
     </div>
 
-    <div class="card-body">
+    <div class="container mt-3">
+        <img class="card-img card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+        <br>
+    </div>
+
+    <div class="card-body mb-5">
         <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
+        <div><strong class="card-subtitle">Condition:</strong> <span class="text-primary">{{vehicle.condition}}</span></div>
+        <div><strong class="card-subtitle">Colour:</strong> <span class="text-primary">{{vehicle.colour}}</span></div>
         <div><strong class="card-subtitle">Description:</strong> <span class="text-primary">{{vehicle.description}}</span></div>
-        <div><strong class="card-subtitle">Price (per hour):</strong> <span class="text-primary">NGN{{vehicle.price}}</span></div>
+        <div><strong class="card-subtitle">Price (per hour):</strong> <span class="text-primary">NGN{{vehicle.price|floatformat:2|intcomma}}</span></div>
         <div class="text-muted small"><strong class="card-subtitle">Quantity (in stock):</strong> <span class="text-primary">{{vehicle.quantity}}</span></div>
         <div class="text-muted small"><strong class="card-subtitle">uploaded time:</strong> <span class="text-primary">{{vehicle.updated}}</span></div>
     </div>
-    <div class="card-body">
+
+    <div class="card-body mt-20">
         {% if not is_reserved %}
-        <form action="{% url 'reservation:reserve' vehicle.id %}" method="post">
+        <form class="mb-4" action="{% url 'reservation:reserve' vehicle.id %}" method="post">
             {{reservation_form.as_p}}
             {% csrf_token %}
             <button type="submit" class="header-btn">Reserve</button>
@@ -33,7 +42,7 @@
 
 </div>
 
-<div id="reserve-right-div" class="border float-right w-50">
+<div id="reserve-right-div" class="border float-right">
     <div class="card-body">
         <h3>Chat with Owner</h3>
         <div class="chat-wrapper">

@@ -3,7 +3,7 @@ from .models import Vehicle, VehicleBrand, VehicleImages, Messages
 
 
 class MessagesAdmin(admin.ModelAdmin):
-    list_display = ['sender', 'receiver', 'timestamp', 'is_read']
+    list_display = ['sender', 'receiver', 'message', 'timestamp', 'is_read']
 
 
 class VehicleAdmin(admin.ModelAdmin):

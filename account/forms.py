@@ -40,7 +40,8 @@ class ProfileForm(forms.ModelForm):
     full_name = forms.CharField(label='Full Name',
                                 widget=forms.TextInput(attrs={'placeholder': 'First Name    Last Name'}))
     phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}), max_length=15)
+    address = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Address'}), max_length=15)
 
     class Meta:
         model = Profile
-        fields = ['full_name', 'phone_number']
+        fields = ['full_name', 'phone_number', 'address']

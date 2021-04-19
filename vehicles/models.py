@@ -38,18 +38,26 @@ class VehicleBrand(models.Model):
 
 
 class Vehicle(models.Model):
+    CONDITION = (
+        ('VERY NEAT', 'very neat'),
+        ('FAIRLY NEAT', 'fairly neat'),
+        ('NOT NEAT', 'not neat'),
+    )
     brand = models.ForeignKey(VehicleBrand, null=True,
                               blank=True, on_delete=models.CASCADE,
                               related_name='vehicles')
     model = models.CharField(max_length=30)
     year = models.IntegerField()
     description = models.CharField(max_length=200)
+    condition = models.CharField(choices=CONDITION, null=True, blank=True, max_length=200)
+    colour = models.CharField(blank=True, null=True, max_length=20)
     price = models.FloatField()
     seat_capacity = models.IntegerField()
     quantity = models.IntegerField()
     availability = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now_add=True)
     current_location = models.CharField(blank=True, null=True, max_length=20)
+
 
     objects = VehicleManager()
 

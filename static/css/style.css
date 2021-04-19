@@ -280,4 +280,17 @@ html body.modal-open div.modal-backdrop.fade{
 
 #reserve-right-div, #reserve-left-div{
     height: 90vh;
+    overflow-x: scroll;
+}
+
+#reserve-right-div{
+    width: 40%;
+}
+
+#reserve-left-div{
+    width: 60%;
+}
+
+.mt-20{
+    margin-top: 90px;
 }
