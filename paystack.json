@@ -1,0 +1,29 @@
+[
+{
+  "model": "paystack.paymenthistory",
+  "pk": 1,
+  "fields": {
+    "email": "im@gm.cm",
+    "reference": "6",
+    "data": "{\"data\": {\"id\": 1082130280, \"log\": {\"input\": [], \"errors\": 0, \"mobile\": false, \"history\": [{\"time\": 11, \"type\": \"action\", \"message\": \"Attempted to pay with card\"}], \"success\": false, \"attempts\": 1, \"start_time\": 1618334602, \"time_spent\": 11}, \"fees\": 28000, \"plan\": {}, \"split\": {}, \"amount\": 1200000, \"domain\": \"test\", \"paidAt\": \"2021-04-13T17:23:33.000Z\", \"status\": \"success\", \"channel\": \"card\", \"message\": null, \"paid_at\": \"2021-04-13T17:23:33.000Z\", \"currency\": \"NGN\", \"customer\": {\"id\": 43145115, \"email\": \"im@gm.cm\", \"phone\": \"\", \"metadata\": null, \"last_name\": \"\", \"first_name\": \"\", \"risk_action\": \"default\", \"customer_code\": \"CUS_y1lzf12qxecnwf3\", \"international_format_phone\": null}, \"metadata\": {\"referrer\": \"http://127.0.0.1:8000/reservation/detail/6/\"}, \"order_id\": null, \"reference\": \"6\", \"created_at\": \"2021-04-13T17:23:21.000Z\", \"fees_split\": null, \"ip_address\": \"129.205.113.221\", \"subaccount\": {}, \"authorization\": {\"bin\": \"408408\", \"bank\": \"TEST BANK\", \"brand\": \"visa\", \"last4\": \"4081\", \"channel\": \"card\", \"exp_year\": \"2030\", \"reusable\": true, \"card_type\": \"visa \", \"exp_month\": \"12\", \"signature\": \"SIG_d1F8evvikDmdmLZpq7rv\", \"account_name\": null, \"country_code\": \"NG\", \"receiver_bank\": null, \"authorization_code\": \"AUTH_jqwbx9sn0h\", \"receiver_bank_account_number\": null}, \"gateway_response\": \"Successful\", \"requested_amount\": 1200000}, \"event\": \"charge.success\"}"
+  }
+},
+{
+  "model": "paystack.paymenthistory",
+  "pk": 2,
+  "fields": {
+    "email": "im@gm.cm",
+    "reference": "7",
+    "data": "{\"data\": {\"id\": 1082137193, \"log\": {\"input\": [], \"errors\": 0, \"mobile\": false, \"history\": [{\"time\": 4, \"type\": \"action\", \"message\": \"Attempted to pay with card\"}], \"success\": false, \"attempts\": 1, \"start_time\": 1618334926, \"time_spent\": 4}, \"fees\": 28000, \"plan\": {}, \"split\": {}, \"amount\": 1200000, \"domain\": \"test\", \"paidAt\": \"2021-04-13T17:28:49.000Z\", \"status\": \"success\", \"channel\": \"card\", \"message\": null, \"paid_at\": \"2021-04-13T17:28:49.000Z\", \"currency\": \"NGN\", \"customer\": {\"id\": 43145115, \"email\": \"im@gm.cm\", \"phone\": \"\", \"metadata\": null, \"last_name\": \"\", \"first_name\": \"\", \"risk_action\": \"default\", \"customer_code\": \"CUS_y1lzf12qxecnwf3\", \"international_format_phone\": null}, \"metadata\": {\"referrer\": \"http://127.0.0.1:8000/reservation/detail/7/\"}, \"order_id\": null, \"reference\": \"7\", \"created_at\": \"2021-04-13T17:28:46.000Z\", \"fees_split\": null, \"ip_address\": \"129.205.113.221\", \"subaccount\": {}, \"authorization\": {\"bin\": \"408408\", \"bank\": \"TEST BANK\", \"brand\": \"visa\", \"last4\": \"4081\", \"channel\": \"card\", \"exp_year\": \"2030\", \"reusable\": true, \"card_type\": \"visa \", \"exp_month\": \"12\", \"signature\": \"SIG_d1F8evvikDmdmLZpq7rv\", \"account_name\": null, \"country_code\": \"NG\", \"receiver_bank\": null, \"authorization_code\": \"AUTH_coqypmvkw4\", \"receiver_bank_account_number\": null}, \"gateway_response\": \"Successful\", \"requested_amount\": 1200000}, \"event\": \"charge.success\"}"
+  }
+},
+{
+  "model": "paystack.paymenthistory",
+  "pk": 3,
+  "fields": {
+    "email": "im@gm.cm",
+    "reference": "8",
+    "data": "{\"data\": {\"id\": 1082139218, \"log\": {\"input\": [], \"errors\": 0, \"mobile\": false, \"history\": [{\"time\": 3, \"type\": \"action\", \"message\": \"Attempted to pay with card\"}], \"success\": false, \"attempts\": 1, \"start_time\": 1618335028, \"time_spent\": 3}, \"fees\": 28000, \"plan\": {}, \"split\": {}, \"amount\": 1200000, \"domain\": \"test\", \"paidAt\": \"2021-04-13T17:30:31.000Z\", \"status\": \"success\", \"channel\": \"card\", \"message\": null, \"paid_at\": \"2021-04-13T17:30:31.000Z\", \"currency\": \"NGN\", \"customer\": {\"id\": 43145115, \"email\": \"im@gm.cm\", \"phone\": \"\", \"metadata\": null, \"last_name\": \"\", \"first_name\": \"\", \"risk_action\": \"default\", \"customer_code\": \"CUS_y1lzf12qxecnwf3\", \"international_format_phone\": null}, \"metadata\": {\"referrer\": \"http://127.0.0.1:8000/reservation/detail/8/\"}, \"order_id\": null, \"reference\": \"8\", \"created_at\": \"2021-04-13T17:30:27.000Z\", \"fees_split\": null, \"ip_address\": \"129.205.113.221\", \"subaccount\": {}, \"authorization\": {\"bin\": \"408408\", \"bank\": \"TEST BANK\", \"brand\": \"visa\", \"last4\": \"4081\", \"channel\": \"card\", \"exp_year\": \"2030\", \"reusable\": true, \"card_type\": \"visa \", \"exp_month\": \"12\", \"signature\": \"SIG_d1F8evvikDmdmLZpq7rv\", \"account_name\": null, \"country_code\": \"NG\", \"receiver_bank\": null, \"authorization_code\": \"AUTH_upxq912qbe\", \"receiver_bank_account_number\": null}, \"gateway_response\": \"Successful\", \"requested_amount\": 1200000}, \"event\": \"charge.success\"}"
+  }
+}
+]

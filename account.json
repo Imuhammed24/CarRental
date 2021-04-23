@@ -1,0 +1,22 @@
+[
+{
+  "model": "account.profile",
+  "pk": 1,
+  "fields": {
+    "user": 3,
+    "full_name": "isi",
+    "phone_number": "09090909090",
+    "address": null
+  }
+},
+{
+  "model": "account.profile",
+  "pk": 2,
+  "fields": {
+    "user": 4,
+    "full_name": "test",
+    "phone_number": "07036653300",
+    "address": null
+  }
+}
+]

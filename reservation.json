@@ -1,0 +1,123 @@
+[
+{
+  "model": "reservation.reservation",
+  "pk": 18,
+  "fields": {
+    "vehicle": 2,
+    "start_period": "2021-04-18T17:21:00Z",
+    "end_period": "2021-04-29T17:22:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 19,
+  "fields": {
+    "vehicle": 1,
+    "start_period": "2021-04-18T17:24:00Z",
+    "end_period": "2021-04-28T17:25:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 20,
+  "fields": {
+    "vehicle": 2,
+    "start_period": "2021-04-18T17:26:00Z",
+    "end_period": "2021-04-23T17:27:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 21,
+  "fields": {
+    "vehicle": 3,
+    "start_period": "2021-04-18T17:30:00Z",
+    "end_period": "2021-04-29T17:31:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 22,
+  "fields": {
+    "vehicle": 3,
+    "start_period": "2021-04-18T17:36:00Z",
+    "end_period": "2021-04-30T17:37:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 23,
+  "fields": {
+    "vehicle": 2,
+    "start_period": "2021-04-18T17:55:00Z",
+    "end_period": "2021-04-30T17:56:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 24,
+  "fields": {
+    "vehicle": 3,
+    "start_period": "2021-04-18T18:12:00Z",
+    "end_period": "2021-04-22T18:13:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 25,
+  "fields": {
+    "vehicle": 2,
+    "start_period": "2021-04-18T18:16:00Z",
+    "end_period": "2021-04-22T18:17:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 26,
+  "fields": {
+    "vehicle": 2,
+    "start_period": "2021-04-18T18:23:00Z",
+    "end_period": "2021-04-29T18:24:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 27,
+  "fields": {
+    "vehicle": 3,
+    "start_period": "2021-04-19T09:36:00Z",
+    "end_period": "2021-04-28T09:37:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+},
+{
+  "model": "reservation.reservation",
+  "pk": 28,
+  "fields": {
+    "vehicle": 2,
+    "start_period": "2021-04-23T10:15:00Z",
+    "end_period": "2021-04-29T10:15:00Z",
+    "is_paid": false,
+    "user": 1
+  }
+}
+]
