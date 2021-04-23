@@ -1,1 +1,1 @@
-web: gunicorn cartal.wsgi --log-file -
+web: gunicorn cartal.wsgi
