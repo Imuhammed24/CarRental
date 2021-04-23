@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 import django_heroku
-django_heroku.settings(locals())
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -167,3 +167,6 @@ PAYSTACK_SECRET_KEY = 'sk_test_b51e7b64428c4c538fc0133801365c36bcaa6094'
 PAYSTACK_SUCCESS_URL = 'reservation:success_pay'
 # PAYSTACK_FAILED_URL = 'paystack:failed_page'
 PAYSTACK_FAILED_URL = 'reservation:failed_pay'
+
+
+django_heroku.settings(locals())
