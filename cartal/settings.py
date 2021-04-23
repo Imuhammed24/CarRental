@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-import django_heroku
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -168,6 +166,3 @@ PAYSTACK_SUCCESS_URL = 'reservation:success_pay'
 # PAYSTACK_FAILED_URL = 'paystack:failed_page'
 PAYSTACK_FAILED_URL = 'reservation:failed_pay'
 
-DISABLE_COLLECTSTATIC=1
-
-django_heroku.settings(locals())
