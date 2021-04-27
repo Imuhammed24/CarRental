@@ -299,3 +299,7 @@ html body.modal-open div.modal-backdrop.fade{
 .reserve-form-div{
     margin-top: 300px;
 }
+
+.d-inline-table{
+    display: inline-table;
+}

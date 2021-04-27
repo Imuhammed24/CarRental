@@ -48,8 +48,10 @@
                               </div>
                           </div>
                           {% empty %}
-                            <p class="text-muted">Sorry no vehicle is available for reservation.</p>
+                            <p class="text-muted"> No result found</p>
                           {% endfor %}
+                  {% else %}
+                          <p class="text-muted ml-3"> No result found</p>
                   {% endif %}
                 </div>
 

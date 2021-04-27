@@ -7,19 +7,25 @@
 
 <div id="vehicleCatalogue">
     <div class="card-deck">
-        {% for vehicle in vehicles %}
-        <div class="card">
-            <img class="card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title font-weight-bold">{{vehicle.brand}}</h5>
-                <p class="card-text">{{vehicle.model}}, {{vehicle.year}}</p>
-                <span class="card-text text-secondary d-block">NGN {{vehicle.price|floatformat:2|intcomma}}</span>
-                <a class="btn btn-primary" href="{% url 'reservation:reserve' vehicle.id %}">reserve</a>
-                <p class="card-text"><small class="text-muted">Last updated {{vehicle.updated|timesince}} ago</small></p>
+        <div class="row">
+              {% for vehicle in vehicles %}
+              <div class="col mb-3">
+                  <div class="card" style="width: 15rem;">
+                    <img class="card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="mb-1 font-weight-bold">{{vehicle.brand}}</h5>
+                      <p class="m-0">{{vehicle.model}}, {{vehicle.year}}</p>
+                      <p class="m-0"><span>Colour</span>: {{vehicle.colour}}</p>
+                      <p class="m-0"><span>Condition</span>: {{vehicle.condition}}</p>
+                      <span class="card-text text-secondary mt-3 mb-2 d-block">NGN {{vehicle.price|floatformat:2|intcomma}}</span>
+                        <a class="btn btn-primary" href="{% url 'reservation:reserve' vehicle.id %}">reserve</a>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+              </div>
+              {% empty %}
+                <p class="text-muted">Sorry no vehicle is available for reservation.</p>
+              {% endfor %}
             </div>
-        </div>
-        {% empty %}
-        <p class="text-muted">Sorry no vehicle is available for reservation.</p>
-        {% endfor %}
     </div>
 </div>
