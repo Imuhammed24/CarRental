@@ -62,7 +62,7 @@ class Vehicle(models.Model):
     objects = VehicleManager()
 
     def __str__(self):
-        return f'{self.brand, self.model} ({self.year})'
+        return f'{self.brand.name, self.model} ({self.year})'
 
 
 class VehicleImages(models.Model):

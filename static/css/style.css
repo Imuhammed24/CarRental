@@ -34,11 +34,12 @@
 }
 
 .chat-wrapper{
-    height: 39vh;
-    overflow-x: scroll;
+    height: 52vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.chat-wrapper, .message-box{
+.message-box{
     overflow: hidden;
 }
 
@@ -157,14 +158,14 @@
     background-repeat: no-repeat;
 }
 
-#index-section, #index-section2{
+#index-section{
     width: 100%;
     overflow: hidden;
 }
 
 #index-section2{
     background-color: #F3F5F7;
-    height: 80vh;
+    /*height: 80vh;*/
 }
 
 #index-section-content{
@@ -293,4 +294,8 @@ html body.modal-open div.modal-backdrop.fade{
 
 .mt-20{
     margin-top: 90px;
+}
+
+.reserve-form-div{
+    margin-top: 300px;
 }
