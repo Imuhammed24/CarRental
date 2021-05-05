@@ -5,9 +5,9 @@
         </div>
         <div class="header-links d-inline">
             <ul>
-                <li class="list-unstyled"><a href="{% url 'account:home' %}">Account</a></li>
-                <li class="list-unstyled"><a href="">About</a></li>
-                <li class="list-unstyled"><a href="">Contact us</a></li>
+                <li class="list-unstyled"><a href="{% url 'account:home' %}">Home</a></li>
+                <li class="list-unstyled"><a href="{% url 'about' %}">About</a></li>
+                <li class="list-unstyled"><a href="{% url 'contact' %}">Contact us</a></li>
                 {% if not request.user.is_authenticated %}
                 <li class="list-unstyled"><button type="button" class="header-btn text-white" data-toggle="modal" data-target="#exampleModal">Sign-up</button></li>
                 <li class="list-unstyled"><button type="button" class="header-btn text-white" data-toggle="modal" data-target="#loginModal">Sign-in</button></li>

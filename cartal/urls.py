@@ -17,10 +17,12 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
-from cartal.views import index_view
+from cartal.views import index_view, about_view, contact_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('about/', about_view, name="about"),
+    path('contact/', contact_view, name="contact"),
     path('', index_view, name="index"),
     path('account/', include(('account.urls', 'account'), namespace='account')),
     path('reservation/', include(('reservation.urls', 'reservation'), namespace='reservation')),

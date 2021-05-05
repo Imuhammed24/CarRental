@@ -5,18 +5,18 @@
 {{ reservation_form.media }}
 {% load humanizelib %}
 
-<div id="reserve-left-div" class="float-left card">
-    <div class="card-body">
+<div id="reserve-left-div" class="card-body">
+    <div class="">
         <h3>Reserve</h3>
         <hr>
     </div>
 
-    <div class="container mt-3">
-        <img class="card-img card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+    <div class="float-left d-inline-table">
+        <img id="vehicle-img-detailed" class="" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
         <br>
     </div>
 
-    <div class="card-body mb-5">
+    <div class="float-left ml-3 mb-5 d-inline-table">
         <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
         <hr>
         <div><strong class="card-subtitle">Condition:</strong> <span class="text-primary">{{vehicle.condition}}</span></div>
@@ -30,7 +30,7 @@
         <div class="text-muted small"><strong class="card-subtitle">uploaded time:</strong> <span class="text-primary">{{vehicle.updated}}</span></div>
     </div>
 
-    <div class="card-body reserve-form-div">
+    <div class="card-body ml-4 reserve-form-div">
         {% if not is_reserved %}
         <form class="mb-4" action="{% url 'reservation:reserve' vehicle.id %}" method="post">
             {{reservation_form.as_p}}
@@ -44,29 +44,4 @@
         {% endif %}
     </div>
 
-</div>
-
-<div id="reserve-right-div" class="border float-right">
-    <div class="card-body">
-        <h3>Chat with Owner</h3>
-        <div class="chat-wrapper">
-            {% for message in chat %}
-            <div class="d-block message-box">
-                {% if message.sender == request.user %}
-                <p class="float-right sent d-block">{{message.message}}</p>
-                <br>
-                <br>
-                {% else %}
-                <p class="float-left d-block received {% if not message.is_read %} unread {% endif %}">{{message.message}}</p>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-        <form id="message_admin_form" action="{% url 'vehicles:send_message' vehicle.id %}" method="post" class="d-block">
-            <hr>
-            {{ message_form.as_p }}
-            {% csrf_token %}
-            <button type="submit" class="header-btn">Send</button>
-        </form>
-    </div>
 </div>

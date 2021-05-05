@@ -21,3 +21,11 @@ def index_view(request):
         'html_title': 'WELCOME TO CARTAL',
     }
     return render(request, 'index.html', context)
+
+
+def contact_view(request):
+    return render(request, 'contact.html', {})
+
+
+def about_view(request):
+    return render(request, 'about.html', {})

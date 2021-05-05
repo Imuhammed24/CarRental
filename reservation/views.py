@@ -1,7 +1,10 @@
+import datetime
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.utils import timezone
 from django.views.generic import TemplateView
 
 from reservation.forms import ReservationForm
@@ -32,6 +35,10 @@ def add_reservation_view(request, vehicle_id):
                 new_reservation = reservation_form.save(commit=False)
                 new_reservation.user = request.user
                 new_reservation.vehicle = vehicle
+                vehicle.quantity -= 1
+                if vehicle.quantity == 0:
+                    vehicle.availability = False
+                vehicle.save()
                 new_reservation.save()
                 context['is_reserved'] = True
                 context['reservation'] = new_reservation
@@ -62,7 +69,18 @@ def reservation_detail_view(request, reservation_id):
 
 @login_required(login_url='/')
 def reservation_list_view(request):
+    # delete expired reservations
+    expired_reservations = request.user.reservations.filter(expiry__lte=timezone.now())
+    if expired_reservations:
+        for expired_reservation in expired_reservations:
+            expired_reservation.vehicle.quantity += 1
+            expired_reservation.vehicle.save()
+            expired_reservation.delete()
+
     reservations = Reservation.objects.filter(user=request.user)
+    reservations = [reservation for reservation in reservations if
+                    reservation.expiry > timezone.now() or reservation.is_paid is True]
+    # reservations = request.user.reservations.fil(expiry__lte=datetime.datetime.now())
     context = {
         'html_title': 'RESERVATIONS',
         'reservations': reservations,

@@ -86,6 +86,8 @@ def update_payment(json_body):
         reservation = Reservation.objects.get(id=reference)
         reservation.is_paid = True
         reservation.vehicle.quantity -= 1
+        if reservation.vehicle.quantity == 0:
+            reservation.vehicle.availability = False
         reservation.vehicle.save()
         reservation.save()
 

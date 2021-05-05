@@ -16,6 +16,7 @@
                       <h5 class="mb-1 font-weight-bold">{{vehicle.brand}}</h5>
                       <p class="m-0">{{vehicle.model}}, {{vehicle.year}}</p>
                       <p class="m-0"><span>Colour</span>: {{vehicle.colour}}</p>
+                      <p class="m-0"><span>Quantity</span>: {{vehicle.quantity}}</p>
                       <p class="m-0"><span>Condition</span>: {{vehicle.condition}}</p>
                       <span class="card-text text-secondary mt-3 mb-2 d-block">NGN {{vehicle.price|floatformat:2|intcomma}}</span>
                         <a class="btn btn-primary" href="{% url 'reservation:reserve' vehicle.id %}">reserve</a>

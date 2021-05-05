@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -5,6 +7,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from account.forms import UserRegistrationForm, LoginForm, ProfileForm
@@ -78,17 +81,27 @@ def login_view(request):
         return redirect('index')
 
 
-@login_required(login_url='/')
 def home_view(request):
-    reservations = request.user.reservations.all()
-    vehicles = Vehicle.objects.all().exclude(id__in=[vehicle.id for vehicle in reservations])
-    context = {
-        'html_title': f'{request.user.username.upper()} ACCOUNT',
-        'vehicles': vehicles,
-        'section': 'account',
-        'sub_section': 'default_home',
-    }
-    return render(request, 'account/account_base.html', context)
+    # delete expired reservations
+    if request.user.is_authenticated:
+        expired_reservations = request.user.reservations.filter(expiry__lte=timezone.now())
+        if expired_reservations:
+            for expired_reservation in expired_reservations:
+                expired_reservation.vehicle.quantity += 1
+                expired_reservation.vehicle.save()
+                expired_reservation.delete()
+        # vehicles = Vehicle.objects.all().exclude(id__in=[vehicle.id for vehicle in reservations])
+        vehicles = Vehicle.objects.filter(quantity__gte=1, availability=True)
+        context = {
+            'html_title': f'{request.user.username.upper()} ACCOUNT',
+            'vehicles': vehicles,
+            'section': 'account',
+            'sub_section': 'default_home',
+        }
+        return render(request, 'account/account_base.html', context)
+    else:
+        messages.error(request, 'please login')
+        return redirect('index')
 
 
 @login_required(login_url='/')
