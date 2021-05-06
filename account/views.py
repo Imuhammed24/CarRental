@@ -108,3 +108,12 @@ def home_view(request):
 def logout_view(request):
     logout(request)
     return redirect('account:home')
+
+
+@login_required(login_url='/')
+def profile_view(request):
+    context = {
+        'section': 'account',
+        'sub_section': 'profile',
+    }
+    return render(request, 'account/account_base.html', context)

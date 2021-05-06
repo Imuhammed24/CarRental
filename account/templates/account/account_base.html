@@ -33,16 +33,18 @@
         </div>
 
         {% if sub_section == 'default_home' %}
-        {% include 'account/default-home.html' %}
+            {% include 'account/default-home.html' %}
         {% elif sub_section == 'reservation_list' %}
-        {% include 'reservation/list.html' %}
+            {% include 'reservation/list.html' %}
         {% elif sub_section == 'reservation_detail' %}
-        {% include 'reservation/detail.html' %}
+            {% include 'reservation/detail.html' %}
         {% elif sub_section == 'reserve' %}
-        {% include 'reservation/reserve.html' %}
+            {% include 'reservation/reserve.html' %}
         {% elif sub_section == 'payment_success' %}
-        {% block payment_success %}
-        {% endblock %}
+            {% block payment_success %}
+            {% endblock %}
+        {% elif sub_section == 'profile' %}
+            {% include 'account/profile.html' %}
         {% endif %}
     </div>
 </div>

@@ -1,18 +1,18 @@
 {% load paystack %}
 {% load humanizelib %}
 
-<div class="mb-5 w-50">
-    <div class="card-body">
+<div class="mb-5 card-body">
+    <div class="">
         <h1 class="font-weight-bold">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</h1>
         <hr>
     </div>
 
-    <div class="container mt-3">
-        <img class="card-img card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
+    <div class="float-left d-inline-table">
+        <img id="vehicle-img-detailed" class="card-img card-img-top" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
         <br>
     </div>
 
-    <div class="card-body">
+    <div class="float-left ml-3 mb-5 d-inline-table">
         <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
         <div><strong class="card-subtitle">Condition:</strong> <span class="text-primary">{{vehicle.condition}}</span></div>
         <div><strong class="card-subtitle">Colour:</strong> <span class="text-primary">{{vehicle.colour}}</span></div>
@@ -25,11 +25,11 @@
         <div><strong class="card-subtitle">STARTING FROM:</strong> <span class="text-primary small">{{reservation.start_period}}</span></div>
         <div><strong class="card-subtitle">ENDING BY:</strong> <span class="text-primary small">{{reservation.end_period}}</span></div>
 
+        {% if not reservation.is_paid %}
+        <div class="card-body d-inline">
+            {% paystack_button amount=vehicle.price metadata=reservation.id email=request.user.email %}
+        </div>
+        {% endif %}
+    </div>
 
-    </div>
-    {% if not reservation.is_paid %}
-    <div class="card-body">
-        {% paystack_button amount=vehicle.price metadata=reservation.id email=request.user.email %}
-    </div>
-    {% endif %}
 </div>
