@@ -170,3 +170,4 @@ PAYSTACK_SUCCESS_URL = 'reservation:success_pay'
 # PAYSTACK_FAILED_URL = 'paystack:failed_page'
 PAYSTACK_FAILED_URL = 'reservation:failed_pay'
 
+DISABLE_COLLECTSTATIC = 1
