@@ -11,6 +11,7 @@ class Reservation(models.Model):
     vehicle = models.ForeignKey(Vehicle, related_name='reservations', on_delete=models.CASCADE)
     start_period = models.DateTimeField()
     end_period = models.DateTimeField()
+    address = models.CharField(max_length=200, blank=True, null=True)
     is_paid = models.BooleanField(default=False)
     expiry = models.DateTimeField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)

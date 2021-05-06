@@ -9,7 +9,7 @@ class ReservationForm(forms.ModelForm):
 
     class Meta:
         model = Reservation
-        fields = ['start_period', 'end_period']
+        fields = ['start_period', 'end_period', 'address']
         widgets = {
             'start_period': DateTimePickerInput().start_of('start_period'),
             'end_period': DateTimePickerInput().end_of('start_period'),
