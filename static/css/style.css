@@ -421,3 +421,8 @@ footer a {
 /*.shadow-none {*/
 /*    box-shadow: none!important;*/
 /*}*/
+
+/*reserve style*/
+.reserve-section{
+    width: 30%;
+}

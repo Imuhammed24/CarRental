@@ -11,12 +11,12 @@
         <hr>
     </div>
 
-    <div class="float-left d-inline-table">
+    <div class="float-left d-inline-table reserve-section">
         <img id="vehicle-img-detailed" class="" src="{{vehicle.images.first.image.url}}" alt="Card image cap">
         <br>
     </div>
 
-    <div class="float-left ml-3 mb-5 d-inline-table">
+    <div class="float-left ml-3 mb-5 d-inline-table reserve-section">
         <div><strong class="card-subtitle mb-1">Name:</strong> <span class="text-primary">{{vehicle.brand}} {{vehicle.model}} {{vehicle.year}}</span></div>
         <hr>
         <div><strong class="card-subtitle">Condition:</strong> <span class="text-primary">{{vehicle.condition}}</span></div>
@@ -30,7 +30,7 @@
         <div class="text-muted small"><strong class="card-subtitle">uploaded time:</strong> <span class="text-primary">{{vehicle.updated}}</span></div>
     </div>
 
-    <div class="card-body ml-4 reserve-form-div">
+    <div class="card-body ml-4 reserve-form-div reserve-section">
         {% if not is_reserved %}
         <form class="mb-4" action="{% url 'reservation:reserve' vehicle.id %}" method="post">
             {{reservation_form.as_p}}

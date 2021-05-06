@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'paystack',
     'django_humanize',
     'bootstrap_datepicker_plus',
-    'django_extensions',
+    # 'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -100,8 +100,8 @@ DATABASES = {
         }
 }
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
